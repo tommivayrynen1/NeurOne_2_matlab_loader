@@ -1,7 +1,7 @@
 %OPEN BINARY NeurOne Brain Vision Data exports (IEEE_float_32) in matlab.
 % input: 'filename.eeg'; output raw,srate
 
-function [raw,srate] = load_eeg(filename)
+function [raw,srate] = load_neurone(filename)
 
 filename_eeg = string(filename);
 filename_eeg = strsplit(filename_eeg,'.');filename_eeg = filename_eeg{1,1};
@@ -26,7 +26,7 @@ filename_eeg = strsplit(filename_eeg,'.');filename_eeg = filename_eeg{1,1};
          if orientation == 'MULTIPLEXED'
          a = fopen(sprintf('%s.eeg',filename_eeg));
          raw = fread(a,[chan_lkm inf],'float32');
-         raw = raw.*0.001; % convert units to microvolts. In the header units are in 0.001muV
+         raw = raw.*0.001; % convert units to microvolts.
          fclose(a);
          end
     end
